@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2e3540">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Dr. Raghad Aboualkhir | Specialist Paediatrician</title>
+<style>
+  :root{
+    --navy:#3f4a5c;
+    --navy-deep:#2e3540;
+    --navy-soft:#48525f;
+    --sheet-bg:#d6dadd;
+    --sheet-text:#2e3540;
+    --gold:#7ecbc4;
+    --cream:#eaf6f4;
+    --white:#ffffff;
+    --muted:#a7afb6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  html,body{
+    background:var(--navy-deep);
+    font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100%;
+    overflow-x:hidden;
+  }
+  body{
+    display:flex;
+    justify-content:center;
+  }
+  .card{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    min-height:100dvh;
+    background:var(--sheet-bg);
+    color:var(--white);
+    position:relative;
+    overflow-x:hidden;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    height:38vh;
+    min-height:240px;
+    max-height:340px;
+    background:url('assets/hero.png') center 20%/cover no-repeat;
+    padding-top:env(safe-area-inset-top);
+  }
+  .hero::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,20,22,0.05) 0%, rgba(24,24,26,0.35) 48%, rgba(60,60,64,0.7) 68%, rgba(160,160,164,0.55) 86%, var(--sheet-bg) 100%);
+  }
+
+  /* AVATAR */
+  .avatar-wrap{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    margin-top:-72px;
+    z-index:3;
+  }
+  .avatar{
+    width:152px; height:152px;
+    border-radius:50%;
+    border:3px solid var(--gold);
+    box-shadow:0 12px 30px rgba(0,0,0,.5);
+    background:#111;
+    overflow:hidden;
+    position:relative;
+  }
+  .avatar img{
+    position:absolute;
+    top:50%; left:50%;
+    width:109%;
+    height:auto;
+    transform:translate(-49%, -26%);
+  }
+
+  /* SHEET */
+  .sheet{
+    position:relative;
+    margin-top:-26px;
+    z-index:2;
+    background:var(--sheet-bg);
+    border-radius:34px 34px 0 0;
+    padding:46px 20px 6px;
+    box-shadow:0 -18px 40px rgba(0,0,0,0.35);
+    animation:fadeUp .7s ease both;
+  }
+
+  .logo-row{
+    display:flex;
+    justify-content:center;
+    margin-bottom:22px;
+  }
+  .logo-row img{ height:84px; }
+
+  .name{
+    text-align:center;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.2px;
+    color:var(--sheet-text);
+  }
+  .title-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:10px;
+    margin-bottom:28px;
+  }
+  .title-row .line{ width:26px; height:1px; background:rgba(232,194,112,0.55); }
+  .title-row span{
+    font-size:13px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--sheet-text);
+    font-weight:700;
+  }
+
+  /* ACTIONS */
+  .actions{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    min-height:64px;
+    padding:14px 18px;
+    border-radius:18px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:transform .15s ease, filter .2s ease;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn .icon{
+    width:42px; height:42px;
+    flex:0 0 42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .btn .icon svg{ width:20px; height:20px; }
+  .btn .text{ display:flex; flex-direction:column; gap:2px; }
+  .btn .text .t{ font-size:15.5px; font-weight:700; }
+  .btn .text .s{ font-size:12.5px; font-weight:400; }
+  .btn .chev{ margin-left:auto; opacity:.6; font-size:18px; }
+
+  .btn.primary{
+    background:linear-gradient(135deg, var(--cream), #e2d4ad);
+    box-shadow:0 10px 24px rgba(232,194,112,0.22);
+  }
+  .btn.primary .icon{ background:var(--navy-deep); }
+  .btn.primary .icon svg{ stroke:var(--cream); }
+  .btn.primary .text .t{ color:var(--navy-deep); }
+  .btn.primary .text .s{ color:#5a5237; }
+  .btn.primary .chev{ color:var(--navy-deep); }
+
+  .btn.secondary{
+    background:var(--navy-soft);
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .btn.secondary .icon{ background:var(--navy-deep); }
+  .btn.secondary .icon svg{ stroke:var(--gold); }
+  .btn.secondary .text .t{ color:var(--white); }
+  .btn.secondary .text .s{ color:var(--muted); }
+  .btn.secondary .chev{ color:var(--gold); }
+
+  /* REGIONAL HUB CARD */
+  .hub-card{
+    position:relative;
+    border-radius:24px;
+    background:var(--navy-soft);
+    border:1px solid rgba(255,255,255,0.06);
+    padding:26px 20px 22px;
+    margin-bottom:26px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .hub-card .dots{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.10) 1px, transparent 1.4px);
+    background-size:14px 14px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 50%, rgba(0,0,0,0.9), transparent 75%);
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 50%, rgba(0,0,0,0.9), transparent 75%);
+    pointer-events:none;
+  }
+  .hub-card .inner{ position:relative; z-index:1; }
+  .hub-pin{
+    width:30px; height:30px;
+    margin:0 auto 10px;
+    color:var(--gold);
+  }
+  .hub-card h4{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .hub-card .sub{
+    margin-top:4px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .hub-card .underline{
+    width:34px; height:2px;
+    background:var(--gold);
+    margin:14px auto 20px;
+    border-radius:2px;
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+  }
+  .feature{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:7px;
+  }
+  .feature .ic{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid rgba(232,194,112,0.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .feature .ic svg{ width:17px; height:17px; stroke:var(--gold); }
+  .feature .ft{ font-size:11px; font-weight:700; text-align:center; line-height:1.25; }
+  .feature .fs{ font-size:9.5px; color:var(--muted); text-align:center; line-height:1.2; }
+
+
+  /* WHATSAPP FAB */
+  .whatsapp-fab{
+    position:fixed;
+    bottom:calc(20px + env(safe-area-inset-bottom));
+    right:50%;
+    transform:translateX(202px);
+    width:54px; height:54px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 20px rgba(37,211,102,0.45);
+    z-index:10;
+    animation:pulse 2.4s infinite;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .whatsapp-fab svg{ width:26px; height:26px; }
+  @media (max-width:480px){
+    .whatsapp-fab{ right:18px; transform:none; }
+  }
+
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(37,211,102,0.5); }
+    70%{ box-shadow:0 0 0 14px rgba(37,211,102,0); }
+    100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:50;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal{
+    width:100%;
+    max-width:480px;
+    background:var(--navy);
+    border-radius:24px 24px 0 0;
+    padding:26px 24px 34px;
+    animation:slideUp .25s ease both;
+  }
+  @keyframes slideUp{ from{transform:translateY(40px); opacity:0;} to{transform:translateY(0); opacity:1;} }
+  .modal h3{ color:var(--gold); font-size:16px; margin-bottom:14px; letter-spacing:.5px; }
+  .modal p{ font-size:14px; color:#cfd3dd; line-height:1.6; margin-bottom:8px; }
+  .modal .close-btn{
+    margin-top:18px;
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.15);
+    background:transparent;
+    color:#fff;
+    font-weight:600;
+    font-size:14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="hero"></div>
+
+  <div class="avatar-wrap">
+    <div class="avatar"><img src="assets/raghad.png" alt="Dr. Raghad Aboualkhir"></div>
+  </div>
+
+  <div class="sheet">
+    <div class="logo-row">
+      <img src="assets/logo.png" alt="Dr. Raghad Aboualkhir">
+    </div>
+
+    <div class="name">Dr. Raghad Aboualkhir</div>
+    <div class="title-row">
+      <span class="line"></span>
+      <span>Specialist Paediatrician</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" id="saveContact" href="#">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+        </span>
+        <span class="text">
+          <span class="t">Save My Contact</span>
+          <span class="s">Add my details to your contacts</span>
+        </span>
+        <span class="chev">›</span>
+      </a>
+
+      <a class="btn secondary" href="https://drraghadpedia.com/" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        </span>
+        <span class="text">
+          <span class="t">Visit My Website</span>
+          <span class="s">drraghadpedia.com</span>
+        </span>
+        <span class="chev">›</span>
+      </a>
+
+      <a class="btn secondary" id="myDetails" href="#">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </span>
+        <span class="text">
+          <span class="t">My Details</span>
+          <span class="s">View my professional information</span>
+        </span>
+        <span class="chev">›</span>
+      </a>
+    </div>
+
+    <a class="hub-card" href="https://drraghadpedia.com/" target="_blank" rel="noopener" style="display:block; text-decoration:none; color:inherit;">
+      <span class="dots"></span>
+      <span class="inner">
+        <svg class="hub-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7.58 8-13A8 8 0 0 0 4 9c0 5.42 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <h4>Luxury Health Care</h4>
+        <div class="sub">Abu Dhabi, UAE</div>
+        <div class="underline"></div>
+        <div class="feature-grid">
+          <div class="feature">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+            <span class="ft">Gentle Care</span>
+            <span class="fs">Child-Focused</span>
+          </div>
+          <div class="feature">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span class="ft">13+ Years</span>
+            <span class="fs">Experience</span>
+          </div>
+          <div class="feature">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="ft">DOH &amp; DHA</span>
+            <span class="fs">Licensed</span>
+          </div>
+          <div class="feature">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg></span>
+            <span class="ft">Syrian Board</span>
+            <span class="fs">Certified</span>
+          </div>
+        </div>
+      </span>
+    </a>
+  </div>
+</div>
+
+<a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/971551176070" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.84.5 3.56 1.37 5.03L2 22l5.25-1.46a9.93 9.93 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.65-.6-2.9-1.25-4.79-4.16-4.93-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.74-2.12 1-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.12.57.17.29.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.29.14.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.38-.24.64-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38z"/></svg>
+</a>
+
+<div class="modal-overlay" id="detailsModal">
+  <div class="modal">
+    <h3>My Details</h3>
+    <p><strong>Name:</strong> Dr. Raghad M. Abo Alkhir</p>
+    <p><strong>Title:</strong> Specialist Paediatrician</p>
+    <p><strong>Clinic:</strong> Luxury Health Care Medical Center</p>
+    <p><strong>WhatsApp:</strong> +971 55 117 6070</p>
+    <p><strong>Email:</strong> Dr.raghad.aboualkhir@gmail.com</p>
+    <p><strong>Website:</strong> <a href="https://drraghadpedia.com/" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline;">drraghadpedia.com</a></p>
+    <button class="close-btn" id="closeModal">Close</button>
+  </div>
+</div>
+
+<script>
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Abo Alkhir;Raghad;Dr.;;',
+    'FN:Dr. Raghad Aboualkhir',
+    'ORG:Luxury Health Care Medical Center',
+    'TITLE:Specialist Paediatrician',
+    'TEL;TYPE=CELL:+971551176070',
+    'EMAIL:Dr.raghad.aboualkhir@gmail.com',
+    'URL:https://drraghadpedia.com/',
+    'END:VCARD'
+  ].join('\r\n');
+
+  const saveBtn = document.getElementById('saveContact');
+  saveBtn.setAttribute('href', 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard));
+  saveBtn.setAttribute('download', 'Dr-Raghad-Aboualkhir.vcf');
+
+  const modal = document.getElementById('detailsModal');
+  document.getElementById('myDetails').addEventListener('click', function(e){
+    e.preventDefault();
+    modal.classList.add('open');
+  });
+  document.getElementById('closeModal').addEventListener('click', function(){
+    modal.classList.remove('open');
+  });
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) modal.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
